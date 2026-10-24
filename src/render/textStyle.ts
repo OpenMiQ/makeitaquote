@@ -1,5 +1,6 @@
 import type { FontWeight } from '../theme/types'
 import type { SKRSContext2D } from './canvasFactory'
+import { fontString } from './layout'
 
 /** Mixed script, so the probe catches fonts that only vary in one of them. */
 const PROBE = 'AWMil あ漢'
@@ -32,9 +33,9 @@ function detect(ctx: SKRSContext2D, family: string): boolean {
   if (cached !== undefined) return cached
 
   const previous = ctx.font
-  ctx.font = `100px ${family}`
+  ctx.font = fontString('normal', 100, family)
   const regular = ctx.measureText(PROBE).width
-  ctx.font = `bold 100px ${family}`
+  ctx.font = fontString('bold', 100, family)
   const bold = ctx.measureText(PROBE).width
   ctx.font = previous
 

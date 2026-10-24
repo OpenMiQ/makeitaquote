@@ -6,6 +6,7 @@ import type { AvatarTheme } from '../theme/types'
 import type { AssetCache } from '../util/assetCache'
 import { avatarCache } from './avatarCache'
 import { createCanvas, type Image, loadImage, type SKRSContext2D } from './canvasFactory'
+import { fontString } from './layout'
 
 const http = createClient({ timeout: 15_000, retry: 2 })
 
@@ -261,7 +262,7 @@ export function drawAvatar(
     if (initial) {
       const size = Math.min(box.width, box.height) * 0.22
       ctx.fillStyle = toCSS(parseColor(theme.fallback.color, 'theme.avatar.fallback.color'))
-      ctx.font = `${size}px ${options.fallbackFont ?? 'sans-serif'}`
+      ctx.font = fontString('normal', size, options.fallbackFont ?? 'sans-serif')
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.fillText(initial.toUpperCase(), box.x + box.width / 2, box.y + box.height / 2)
