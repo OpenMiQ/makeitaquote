@@ -9,7 +9,7 @@
       "format": "png",
       "width": 1200,
       "height": 630,
-      "bytes": 184695,
+      "bytes": 184054,
       "ok": true,
       "error": null
     },
@@ -20,7 +20,7 @@
       "format": "jpeg",
       "width": null,
       "height": null,
-      "bytes": 29147,
+      "bytes": 29076,
       "ok": true,
       "error": null
     },
@@ -31,7 +31,7 @@
       "format": "webp",
       "width": null,
       "height": null,
-      "bytes": 33698,
+      "bytes": 33406,
       "ok": true,
       "error": null
     },
@@ -42,7 +42,7 @@
       "format": "avif",
       "width": null,
       "height": null,
-      "bytes": 7284,
+      "bytes": 16513,
       "ok": true,
       "error": null
     }
