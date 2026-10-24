@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { defineTheme } from '../theme/resolve'
+import { createCanvas } from './canvasFactory'
 import { autoArea, computeLayout, cssFontFamily, fontString, gradientLine } from './layout'
 
 describe('computeLayout · side', () => {
@@ -194,5 +195,23 @@ describe('cssFontFamily', () => {
 
   it('drops empty entries and surrounding whitespace', () => {
     expect(cssFontFamily(' Noto Sans JP ,, sans-serif ')).toBe('"Noto Sans JP", sans-serif')
+  })
+})
+
+describe('fontString on a real canvas', () => {
+  // A ctx.font value the parser rejects is silently ignored, so read it back: any family name a user or the catalogue can supply must stick.
+  it.each([
+    'M PLUS Rounded 1c, Noto Sans JP, sans-serif',
+    'M PLUS 1p',
+    'DotGothic16',
+    "O'Brien Sans",
+    '2nd Custom Font',
+    'sans-serif',
+  ])('is accepted by ctx.font for %s', (family) => {
+    const ctx = createCanvas(1, 1).getContext('2d')
+    ctx.font = '7px serif'
+    ctx.font = fontString('bold', 32, family, true)
+    expect(ctx.font).not.toBe('7px serif')
+    expect(ctx.font).toContain('32px')
   })
 })

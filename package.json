@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "@makeitaquote/utils": "^1.2.1",
-    "@napi-rs/canvas": ">=1.0.8 <1.0.12",
+    "@napi-rs/canvas": "^1.0.13",
     "@twemoji/parser": "^17.0.2",
     "budoux": "^0.9.1",
     "cleye": "^2.6.0",

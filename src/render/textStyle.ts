@@ -24,7 +24,7 @@ export function resolvedWeight(base: FontWeight, bold: boolean | undefined): Fon
 /**
  * Families whose bold is faked, keyed by family name.
  *
- * Variable fonts registered through `GlobalFonts` — including the Noto Sans JP this package downloads — expose only their default instance to Skia, so `ctx.font = 'bold …'` measures and draws identically to regular. Detected once per family by measuring both.
+ * A family registered with only its regular face — common for fonts registered at runtime — has no bold to switch to, so `ctx.font = 'bold …'` measures and draws identically to regular. Detected once per family by measuring both. (Variable fonts such as the Noto Sans JP this package downloads honour their weight axis since `@napi-rs/canvas` 1.0.12, so they detect as real bold.)
  */
 const syntheticFamilies = new Map<string, boolean>()
 
