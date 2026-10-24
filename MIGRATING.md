@@ -4,7 +4,7 @@
 
 ### The `makeitaquote/api` subpath is gone
 
-The Voids API client moved out of this package into its own, [`@makeitaquote/voids`](https://github.com/otnc/makeitaquote-voids). Nothing about it changed except where it is installed from and what the import specifier says:
+The Voids API client moved out of this package into its own, [`@makeitaquote/voids`](https://github.com/OpenMiQ/makeitaquote-voids). Nothing about it changed except where it is installed from and what the import specifier says:
 
 ```diff
 - import { VoidsMiQ } from 'makeitaquote/api'

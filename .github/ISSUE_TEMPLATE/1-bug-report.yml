@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before filing: the Voids API client lives in its own package now (`@makeitaquote/voids`). Anything about `VoidsMiQ` belongs in https://github.com/otnc/makeitaquote-voids, not here.
+        Before filing: the Voids API client lives in its own package now (`@makeitaquote/voids`). Anything about `VoidsMiQ` belongs in https://github.com/OpenMiQ/makeitaquote-voids, not here.
 
   - type: textarea
     id: what-happened

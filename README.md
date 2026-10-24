@@ -2,9 +2,9 @@
 
 Turn a message into a quote image.
 
-[![npm](https://img.shields.io/npm/v/makeitaquote)](https://www.npmjs.com/package/makeitaquote) [![CI](https://img.shields.io/github/actions/workflow/status/otnc/makeitaquote/ci.yml?branch=main&label=ci)](https://github.com/otnc/makeitaquote/actions) [![License](https://img.shields.io/github/license/otnc/makeitaquote)](LICENSE) [![Node](https://img.shields.io/node/v/makeitaquote)](https://www.npmjs.com/package/makeitaquote) [![技術者倫理|遵守済み](https://gijutsusharin.li/badge.svg)](https://gijutsusharin.li)
+[![npm](https://img.shields.io/npm/v/makeitaquote)](https://www.npmjs.com/package/makeitaquote) [![CI](https://img.shields.io/github/actions/workflow/status/OpenMiQ/makeitaquote/ci.yml?branch=main&label=ci)](https://github.com/OpenMiQ/makeitaquote/actions) [![License](https://img.shields.io/github/license/OpenMiQ/makeitaquote)](LICENSE) [![Node](https://img.shields.io/node/v/makeitaquote)](https://www.npmjs.com/package/makeitaquote) [![技術者倫理|遵守済み](https://gijutsusharin.li/badge.svg)](https://gijutsusharin.li)
 
-**[See every option as a picture →](https://otnc.github.io/makeitaquote/)**
+**[See every option as a picture →](https://openmiq.github.io/makeitaquote/)**
 
 Renders locally — no API, no browser, no headless Chrome. Japanese line breaking, Twemoji, Discord and Misskey custom emoji, and fonts that download themselves are all built in.
 
@@ -19,15 +19,15 @@ npm install makeitaquote
 > [!Note]
 >   
 > The self-hosted Make it a Quote Bot is now open source:  
-> https://github.com/otnc/OpenMiQ
+> https://github.com/OpenMiQ/discord-bot
 
 > [!Important]
 >   
-> `VoidsMiQ` (`makeitaquote/api`) has been removed and moved to another package: https://github.com/otnc/makeitaquote-voids
+> `VoidsMiQ` (`makeitaquote/api`) has been removed and moved to another package: https://github.com/OpenMiQ/makeitaquote-voids
 > ```bash
 > npm install @makeitaquote/voids
 > ```
-> There's also [`@makeitaquote/miqx`](https://github.com/otnc/makeitaquote-miqx), the same idea against the MiqX API instead of Voids:
+> There's also [`@makeitaquote/miqx`](https://github.com/OpenMiQ/makeitaquote-miqx), the same idea against the MiqX API instead of Voids:
 > ```bash
 > npm install @makeitaquote/miqx
 > ```
@@ -928,7 +928,7 @@ A missing emoji, avatar or font never throws by default — the image degrades i
 
 **Node.js** is the tested runtime (22+). **Bun** loads the native binding fine and both entry points (ESM and CJS) render correctly — it isn't part of CI, so treat it as working rather than officially supported. **Deno** hasn't been verified: its Node-API compatibility for native addons like this one is still maturing, and it needs `--allow-ffi`/`--allow-read` for the binding and font files besides.
 
-On a platform without a binary, use [`@makeitaquote/voids`](https://github.com/otnc/makeitaquote-voids) — the external-API client that used to live here as `makeitaquote/api` — or [`@makeitaquote/miqx`](https://github.com/otnc/makeitaquote-miqx), the same idea against the MiqX API instead.
+On a platform without a binary, use [`@makeitaquote/voids`](https://github.com/OpenMiQ/makeitaquote-voids) — the external-API client that used to live here as `makeitaquote/api` — or [`@makeitaquote/miqx`](https://github.com/OpenMiQ/makeitaquote-miqx), the same idea against the MiqX API instead.
 
 ---
 
