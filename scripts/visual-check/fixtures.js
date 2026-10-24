@@ -13,7 +13,7 @@ export const text = {
   en: 'A quote is just a picture of some words, and a picture of some words is surprisingly hard to get right.',
   kinsoku: 'そうですね。ええ、まったく。「なるほど」と、彼は言った（たぶん）。',
   newlines: '朝は苦手\n昼は眠い\n夜は元気',
-  url: '詳しくは https://github.com/otnc/makeitaquote/blob/main/README.md を読んでください',
+  url: '詳しくは https://github.com/OpenMiQ/makeitaquote/blob/main/README.md を読んでください',
   veryLong: `${'吾輩は猫である。名前はまだ無い。'.repeat(40)}`,
   twemoji: 'できた👼 うれしい🎉 家族👨‍👩‍👧‍👦 と👍🏽',
   discord: `おはよう ${discordEmoji.join(' ')} いい天気`,

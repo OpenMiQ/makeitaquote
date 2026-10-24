@@ -16,13 +16,13 @@
     "misskey",
     "canvas"
   ],
-  "homepage": "https://github.com/otnc/makeitaquote#readme",
+  "homepage": "https://github.com/OpenMiQ/makeitaquote#readme",
   "bugs": {
-    "url": "https://github.com/otnc/makeitaquote/issues"
+    "url": "https://github.com/OpenMiQ/makeitaquote/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/otnc/makeitaquote.git"
+    "url": "git+https://github.com/OpenMiQ/makeitaquote.git"
   },
   "license": "MIT",
   "author": "otoneko.",

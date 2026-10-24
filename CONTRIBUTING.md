@@ -43,7 +43,7 @@ src/
 
 One structural rule is worth knowing about: **`src/render/canvasFactory.ts` is the only place `@napi-rs/canvas` is imported.** Everything that touches the canvas goes through it, and `check-build.js` verifies the built output keeps the binding external rather than bundling a `.node` file that would not load.
 
-The external-API client that used to live in `src/api/` is now its own package, [`@makeitaquote/voids`](https://github.com/otnc/makeitaquote-voids). Bugs and features for it belong in that repository.
+The external-API client that used to live in `src/api/` is now its own package, [`@makeitaquote/voids`](https://github.com/OpenMiQ/makeitaquote-voids). Bugs and features for it belong in that repository.
 
 ## Tests
 
@@ -83,4 +83,4 @@ Maintainers only. Run the `release` workflow from the Actions tab and give it a 
 
 The workflow runs the full check suite, publishes to npm via trusted publishing (OIDC — there is no `NPM_TOKEN`), then tags and creates the GitHub release.
 
-Publishing requires the trusted publisher to be configured once on npmjs.com: package Settings → Publishing access → Trusted publishers → GitHub, pointing at `otnc/makeitaquote` and `release.yml`.
+Publishing requires the trusted publisher to be configured once on npmjs.com: package Settings → Publishing access → Trusted publishers → GitHub, pointing at `OpenMiQ/makeitaquote` and `release.yml`.

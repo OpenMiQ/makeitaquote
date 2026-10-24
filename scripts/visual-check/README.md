@@ -1,6 +1,6 @@
 # visual-check
 
-Renders a curated set of option combinations to `docs/visual/`, the source for the [published gallery](https://otnc.github.io/makeitaquote/). Every case is also checked programmatically (decodable image, expected format/size), so this doubles as a smoke test.
+Renders a curated set of option combinations to `docs/visual/`, the source for the [published gallery](https://openmiq.github.io/makeitaquote/). Every case is also checked programmatically (decodable image, expected format/size), so this doubles as a smoke test.
 
 ```sh
 npm run build          # reads dist/, so build first

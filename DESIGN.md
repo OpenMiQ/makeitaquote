@@ -1,7 +1,7 @@
 # makeitaquote 設計書
 
 最終更新: 2026-08-30／対象バージョン: `makeitaquote@12.0.0` までの設計判断を累積した記録
-リポジトリ: https://github.com/otnc/makeitaquote ／ リポジトリ構成のベース: [`oto-lab/npm-biome-ts`](https://github.com/oto-lab/npm-biome-ts)
+リポジトリ: https://github.com/OpenMiQ/makeitaquote ／ リポジトリ構成のベース: [`oto-lab/npm-biome-ts`](https://github.com/oto-lab/npm-biome-ts)
 
 > **この文書について**: §1〜§13 は 2026-07-31 に書いた v9 時点の詳細設計書で、当時の判断をそのまま残している（v8 との後方互換を持たない、という § 1.3 の決定を含め、事実として過去に確定した内容だから）。**v9 以降の変更は §14 以降に版ごとの節として追記**しており、本体の記述と矛盾する場合は番号の大きい節が優先する。今の姿を知りたいだけなら本体は読み飛ばし、下の一覧から該当する節に直接飛んでよい。
 >
@@ -397,11 +397,11 @@ makeitaquote/
     "img", "image", "gen", "generate", "miq",
     "makeitaquote", "quote", "discord", "canvas", "api"
   ],
-  "homepage": "https://github.com/otnc/makeitaquote#readme",
-  "bugs": { "url": "https://github.com/otnc/makeitaquote/issues" },
+  "homepage": "https://github.com/OpenMiQ/makeitaquote#readme",
+  "bugs": { "url": "https://github.com/OpenMiQ/makeitaquote/issues" },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/otnc/makeitaquote.git"
+    "url": "git+https://github.com/OpenMiQ/makeitaquote.git"
   },
   "license": "ISC",
   "author": "otoneko.",
@@ -816,7 +816,7 @@ jobs:
         run: gh release create "${{ steps.bump.outputs.version }}" --title "${{ steps.bump.outputs.version }}" --generate-notes
 ```
 
-**公開前の準備（1 回だけ）**: npmjs.com の `makeitaquote` → Settings → Publishing access → Trusted publishers で GitHub の `otnc/makeitaquote` / `release.yml` を登録する。これをしないと `npm publish` が失敗する。
+**公開前の準備（1 回だけ）**: npmjs.com の `makeitaquote` → Settings → Publishing access → Trusted publishers で GitHub の `OpenMiQ/makeitaquote` / `release.yml` を登録する。これをしないと `npm publish` が失敗する。
 
 ### 5.12 Issue / PR テンプレート・CONTRIBUTING
 
