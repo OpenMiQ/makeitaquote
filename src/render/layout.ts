@@ -116,6 +116,40 @@ export function watermarkCorner(theme: Theme): 'bottom-right' | 'bottom-left' | 
   return theme.avatar.position === 'right' ? 'bottom-left' : 'bottom-right'
 }
 
+/** CSS generic family keywords, which name no real font and so must stay unquoted. */
+const GENERIC_FAMILIES = new Set([
+  'serif',
+  'sans-serif',
+  'monospace',
+  'cursive',
+  'fantasy',
+  'system-ui',
+  'emoji',
+  'math',
+  'fangsong',
+  'ui-serif',
+  'ui-sans-serif',
+  'ui-monospace',
+  'ui-rounded',
+])
+
+/**
+ * Quotes every family in a comma-separated list, leaving generic keywords and already-quoted names alone.
+ *
+ * `@napi-rs/canvas` 1.0.12+ parses `ctx.font` like Blink, which rejects the whole value when an unquoted family is not a valid CSS identifier sequence (the `1c` in `M PLUS Rounded 1c`) and silently keeps the previous font instead.
+ */
+export function cssFontFamily(families: string): string {
+  return (families.match(/"[^"]*"|'[^']*'|[^,]+/g) ?? [])
+    .map((family) => family.trim())
+    .filter((family) => family !== '')
+    .map((family) =>
+      /^["']/.test(family) || GENERIC_FAMILIES.has(family.toLowerCase())
+        ? family
+        : `"${family.replace(/["\\]/g, '\\$&')}"`,
+    )
+    .join(', ')
+}
+
 /**
  * Builds the CSS font shorthand a canvas context expects.
  *
@@ -129,7 +163,7 @@ export function fontString(
 ): string {
   const stylePrefix = italic ? 'italic ' : ''
   const weightPart = weight === 'normal' ? '' : `${weight} `
-  return `${stylePrefix}${weightPart}${size}px ${family}`
+  return `${stylePrefix}${weightPart}${size}px ${cssFontFamily(family)}`
 }
 
 /** Resolves a size that may be a fraction of the canvas height, or pixels. */

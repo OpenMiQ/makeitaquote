@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { defineTheme } from '../theme/resolve'
-import { autoArea, computeLayout, fontString, gradientLine } from './layout'
+import { autoArea, computeLayout, cssFontFamily, fontString, gradientLine } from './layout'
 
 describe('computeLayout · side', () => {
   it('puts the avatar on the left by default', () => {
@@ -139,30 +139,60 @@ describe('gradientLine', () => {
 
 describe('fontString', () => {
   it('omits a normal weight', () => {
-    expect(fontString('normal', 32, 'Noto Sans JP')).toBe('32px Noto Sans JP')
+    expect(fontString('normal', 32, 'Noto Sans JP')).toBe('32px "Noto Sans JP"')
   })
 
   it('includes a keyword weight', () => {
-    expect(fontString('bold', 32, 'Noto Sans JP')).toBe('bold 32px Noto Sans JP')
+    expect(fontString('bold', 32, 'Noto Sans JP')).toBe('bold 32px "Noto Sans JP"')
   })
 
   it('includes a numeric weight', () => {
-    expect(fontString(700, 32, 'Noto Sans JP')).toBe('700 32px Noto Sans JP')
+    expect(fontString(700, 32, 'Noto Sans JP')).toBe('700 32px "Noto Sans JP"')
   })
 
   it('omits italic by default', () => {
-    expect(fontString('normal', 32, 'Noto Sans JP')).toBe('32px Noto Sans JP')
+    expect(fontString('normal', 32, 'Noto Sans JP')).toBe('32px "Noto Sans JP"')
   })
 
   it('prefixes italic before the weight, in CSS shorthand order', () => {
-    expect(fontString('bold', 32, 'Noto Sans JP', true)).toBe('italic bold 32px Noto Sans JP')
+    expect(fontString('bold', 32, 'Noto Sans JP', true)).toBe('italic bold 32px "Noto Sans JP"')
   })
 
   it('prefixes italic even with a normal weight', () => {
-    expect(fontString('normal', 32, 'Noto Sans JP', true)).toBe('italic 32px Noto Sans JP')
+    expect(fontString('normal', 32, 'Noto Sans JP', true)).toBe('italic 32px "Noto Sans JP"')
   })
 
   it('prefixes italic before a numeric weight', () => {
-    expect(fontString(700, 32, 'Noto Sans JP', true)).toBe('italic 700 32px Noto Sans JP')
+    expect(fontString(700, 32, 'Noto Sans JP', true)).toBe('italic 700 32px "Noto Sans JP"')
+  })
+
+  it('quotes every family in a stack', () => {
+    expect(fontString('normal', 32, 'M PLUS Rounded 1c, Noto Sans JP, sans-serif')).toBe(
+      '32px "M PLUS Rounded 1c", "Noto Sans JP", sans-serif',
+    )
+  })
+})
+
+describe('cssFontFamily', () => {
+  it('quotes a family that is not a valid CSS identifier', () => {
+    expect(cssFontFamily('M PLUS Rounded 1c')).toBe('"M PLUS Rounded 1c"')
+  })
+
+  it('leaves generic keywords unquoted, in any case', () => {
+    expect(cssFontFamily('serif, Sans-Serif, monospace, system-ui')).toBe(
+      'serif, Sans-Serif, monospace, system-ui',
+    )
+  })
+
+  it('keeps already-quoted families as written, commas included', () => {
+    expect(cssFontFamily(`"Foo, Bar", 'Baz', Qux`)).toBe(`"Foo, Bar", 'Baz', "Qux"`)
+  })
+
+  it('escapes quotes and backslashes inside a family', () => {
+    expect(cssFontFamily('A"B\\C')).toBe('"A\\"B\\\\C"')
+  })
+
+  it('drops empty entries and surrounding whitespace', () => {
+    expect(cssFontFamily(' Noto Sans JP ,, sans-serif ')).toBe('"Noto Sans JP", sans-serif')
   })
 })
